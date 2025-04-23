@@ -46,7 +46,6 @@ class UserController extends Controller
             'password' => 'required'
         ]);
     
-        // Static admin credentials
         $adminEmail = 'admin@example.com';
         $adminPassword = 'admin123';
     
@@ -54,7 +53,6 @@ class UserController extends Controller
             return redirect()->route('dashboard')->with('success', 'Welcome Admin!');
         }
     
-        // Otherwise, try normal user login via Auth
         $credentials = [
             'email' => $request->email,
             'password' => $request->password,
