@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/dashboard', function () {
     if (session('is_admin')) {
-        $users = UserDetail::all(); // <-- fetch all users for admin dashboard
+        $users = UserDetail::all(); 
         return view('dashboard', compact('users'));
     } else {
         return redirect('/login')->with('fail', 'Unauthorized access.');

@@ -47,12 +47,11 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        // Static Admin Credentials
         $adminEmail = 'admin@example.com';
         $adminPassword = 'admin123';
 
         if ($request->email === $adminEmail && $request->password === $adminPassword) {
-            session(['is_admin' => true]); // set admin session
+            session(['is_admin' => true]); 
             return redirect()->route('dashboard')->with('success', 'Welcome Admin!');
         }
 
