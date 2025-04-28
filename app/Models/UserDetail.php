@@ -1,13 +1,17 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class UserDetail extends Model
 {
-    protected $table = 'userdetails'; // explicitly set table name
-
     protected $fillable = [
-        'name', 'dob', 'gender', 'course',
+        'user_id', 'name', 'dob', 'gender', 'course'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

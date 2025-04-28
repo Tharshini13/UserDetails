@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Register</title>
+    <title>Login</title>
     <style>
         .form-container{
             width: 45%;
@@ -34,20 +34,19 @@
     <div class="container">
         <div class="form-container shadow-lg p-3 mb-5 bg-body rounded">
             <h2>Login</h2>
-            <form action="{{route('login')}}" method="POST" enctype="multipart/form-data">
-            @csrf
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
 
-            @if(Session::has('fail'))
-            <div class="alert alert-danger">{{Session::get('fail')}}</div>
-            @endif
-
+                @if(Session::has('fail'))
+                <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                @endif
 
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email" required>
                         @error('email')
-                        <span class="text-danger">{{$message}}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
@@ -55,17 +54,16 @@
                 <div class="mb-3 row">
                     <label class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="password">
+                        <input type="password" class="form-control" name="password" required>
                         @error('password')
-                        <span class="text-danger">{{$message}}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Login</button>
 
-                <p>Not have an account?<a href="/register">Register</a></p>
-                
+                <p>Don't have an account? <a href="/register">Register</a></p>
             </form>
         </div>
     </div>
